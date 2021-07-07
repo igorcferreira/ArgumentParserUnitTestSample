@@ -3,12 +3,6 @@ import ArgumentParser
 
 public struct PrintMessage: ParsableCommand {
     
-    public enum PrintError: LocalizedError {
-        case emptyMessage
-        
-        public var errorDescription: String? { "Please, inform a message" }
-    }
-    
     /// The `CodingKeys` is necessary to remove the `console` variable from the Decodable
     /// parsing.
     enum CodingKeys: String, CodingKey {
