@@ -8,9 +8,4 @@
 import Foundation
 import ArgumentParserUsage
 
-#if DEBUG
-PrintMessage.main(["Hello World", "-p", "Prefix: "])
-#else
 PrintMessage.main()
-#endif
-
