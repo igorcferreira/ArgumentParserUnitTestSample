@@ -1,13 +1,13 @@
 import Foundation
 import ArgumentParser
 
-enum PrintError: LocalizedError {
-    case emptyMessage
+public struct PrintMessage: ParsableCommand {
     
-    var errorDescription: String? { "Please, inform a message" }
-}
-
-struct PrintMessage: ParsableCommand {
+    public enum PrintError: LocalizedError {
+        case emptyMessage
+        
+        public var errorDescription: String? { "Please, inform a message" }
+    }
     
     /// The `CodingKeys` is necessary to remove the `console` variable from the Decodable
     /// parsing.
@@ -31,7 +31,9 @@ struct PrintMessage: ParsableCommand {
         print($0)
     }
     
-    func run() throws {
+    public init() {}
+    
+    public func run() throws {
         
         guard !message.isEmpty else { throw PrintError.emptyMessage }
         
