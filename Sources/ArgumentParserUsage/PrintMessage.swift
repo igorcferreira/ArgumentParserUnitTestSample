@@ -3,6 +3,8 @@ import ArgumentParser
 
 public struct PrintMessage: ParsableCommand {
     
+    public static let configuration = CommandConfiguration(abstract: "Prints a message with an optional prefix")
+    
     /// The `CodingKeys` is necessary to remove the `console` variable from the Decodable
     /// parsing.
     enum CodingKeys: String, CodingKey {

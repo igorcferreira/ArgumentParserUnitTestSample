@@ -7,8 +7,6 @@ let package = Package(
     name: "ArgumentParserUsage",
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .executable(name: "ArgumentParserUsageSample",
-                    targets: ["ArgumentParserUsageSample"]),
         .library(
             name: "ArgumentParserUsage",
             targets: ["ArgumentParserUsage"]),
@@ -20,8 +18,9 @@ let package = Package(
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
-        .target(name: "ArgumentParserUsageSample",
-                dependencies: ["ArgumentParserUsage"]),
+        .target(name: "print-message",
+                dependencies: ["ArgumentParserUsage"],
+                path: "Sources/PrintMessage"),
         .target(
             name: "ArgumentParserUsage",
             dependencies: [
@@ -29,6 +28,6 @@ let package = Package(
             ]),
         .testTarget(
             name: "ArgumentParserUsageTests",
-            dependencies: ["ArgumentParserUsage"]),
+            dependencies: ["ArgumentParserUsage"])
     ]
 )
