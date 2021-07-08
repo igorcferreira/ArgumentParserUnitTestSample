@@ -23,7 +23,7 @@ public struct PrintMessage: ParsableCommand {
     var message: String
     
     /// This `console` variable is used to allow unit testing the output of the process.
-    var console: ((String) -> Void) = {
+    private var console: ((String) -> Void) = {
         print($0)
     }
     
@@ -40,3 +40,13 @@ public struct PrintMessage: ParsableCommand {
         }
     }
 }
+
+#if DEBUG
+public extension PrintMessage {
+    static func parse(_ arguments: [String], console: @escaping (String) -> Void) throws -> Self {
+        var object = try Self.parse(arguments)
+        object.console = console
+        return object
+    }
+}
+#endif

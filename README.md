@@ -6,8 +6,7 @@ The goal is to demonstrate a code pattern that allows to code injection and an u
 
 ```swift
 func testDefaultPrefix() throws {
-    var runner = try PrintMessage.parse(["Test Message"])
-    runner.console = {
+    let runner = try PrintMessage.parse(["Test Message"]) {
         XCTAssertEqual($0, "Message: Test Message", "Invalid message option")
     }
     try runner.run()
